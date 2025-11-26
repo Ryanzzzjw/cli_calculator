@@ -39,11 +39,11 @@
 
 ### Module 3: Complete Four Operations
 **Status: PENDING**
-- [ ] Implement subtraction
-- [ ] Implement multiplication
-- [ ] Implement division
-- [ ] Handle division by zero error
-- [ ] Use if-else statements
+- [x] Implement subtraction
+- [x] Implement multiplication
+- [x] Implement division
+- [x] Handle division by zero error
+- [x] Use if-else statements
 
 **Key Concepts to Learn:**
 - Conditional statements (if-else)
@@ -54,10 +54,10 @@
 
 ### Module 4: Operation Menu
 **Status: PENDING**
-- [ ] Display menu options
-- [ ] Read user choice
-- [ ] Implement switch-case statement
-- [ ] Handle invalid choices
+- [x] Display menu options
+- [x] Read user choice
+- [x] Implement switch-case statement
+- [x] Handle invalid choices
 
 **Key Concepts to Learn:**
 - switch-case statement
@@ -67,10 +67,10 @@
 
 ### Module 5: Loop Functionality
 **Status: PENDING**
-- [ ] Implement while loop
-- [ ] Add continue/exit option
-- [ ] Use break statement
-- [ ] Program flow control
+- [x] Implement while loop
+- [x] Add continue/exit option
+- [x] Use break statement
+- [x] Program flow control
 
 **Key Concepts to Learn:**
 - while loop
