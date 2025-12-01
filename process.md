@@ -80,16 +80,16 @@
 ---
 
 ### Module 6: Input Validation ⚠️ CRITICAL
-**Status: PENDING**
-- [ ] Understand scanf buffer issues
-- [ ] Clear input buffer with while(getchar() != '\n')
-- [ ] Check scanf return value
-- [ ] Advanced: Use fgets() + sscanf()
+**Status: COMPLETED** ✅
+- [x] Understand scanf buffer issues
+- [x] Clear input buffer with while(getchar() != '\n')
+- [x] Check scanf return value
+- [x] Advanced: Use fgets() + sscanf()
 
-**Key Concepts to Learn:**
+**Key Concepts Learned:**
 - Input buffer management
-- scanf pitfalls
-- Robust input handling
+- scanf pitfalls and return value checking
+- Robust input handling with fgets() + sscanf()
 
 ---
 
