@@ -94,17 +94,18 @@
 ---
 
 ### Module 7: Pointer Basics 🎯
-**Status: PENDING**
-- [ ] Understand pointer concept
-- [ ] Implement swap() function
-- [ ] Use address-of operator (&)
-- [ ] Use dereference operator (*)
-- [ ] Pass by reference vs pass by value
+**Status: COMPLETED** ✅
+- [x] Understand pointer concept
+- [x] Implement swap() function
+- [x] Use address-of operator (&)
+- [x] Use dereference operator (*)
+- [x] Pass by reference vs pass by value
 
-**Key Concepts to Learn:**
+**Key Concepts Learned:**
 - Pointers (C language soul #1)
 - Memory addresses
 - Function parameter passing
+- Difference between pass by value and pass by reference
 
 ---
 
