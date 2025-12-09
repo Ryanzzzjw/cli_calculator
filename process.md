@@ -177,55 +177,71 @@
 ---
 
 ### Module 12: Safe String Handling 🔒
-**Status: PENDING**
-- [ ] Replace sprintf with snprintf
-- [ ] Understand buffer overflow
-- [ ] Implement boundary checking
+**Status: COMPLETED** ✅
+- [x] Replace strcpy with snprintf
+- [x] Understand buffer overflow risks
+- [x] Implement boundary checking with sizeof()
+- [x] Learn snprintf for formatted strings
+- [x] Ensure null terminator handling
 
-**Key Concepts to Learn:**
-- Memory safety
-- Buffer overflow prevention
+**Key Concepts Learned:**
+- Memory safety and buffer overflow prevention
+- strcpy vs strncpy vs snprintf
+- sizeof() operator for buffer size
+- Null terminator importance
 - Secure coding practices
 
 ---
 
 ### Module 13: File Persistence
-**Status: PENDING**
-- [ ] Use fopen() to open files
-- [ ] Use fprintf() to write data
-- [ ] Use fscanf() to read data
-- [ ] Use fclose() to close files
-- [ ] Save history on exit
-- [ ] Load history on startup
+**Status: COMPLETED** ✅
+- [x] Implement save_history() function
+- [x] Implement load_history() function
+- [x] Call load_history() on program startup
+- [x] Call save_history() before program exit
+- [x] Test file persistence across sessions
 
-**Key Concepts to Learn:**
-- File I/O operations
-- Data persistence
+**Key Concepts Learned:**
+- File I/O operations (fopen, fprintf, fscanf, fclose)
+- Data persistence and serialization
+- Error handling for file operations
+- File modes ("r" for read, "w" for write)
+- Working directory and file paths
 
 ---
 
 ### Module 14: Command Line Arguments (Optional Challenge) 🚀
-**Status: PENDING**
-- [ ] Modify main signature: int main(int argc, char *argv[])
-- [ ] Parse command line arguments
-- [ ] Convert strings to numbers (atof)
-- [ ] Support: ./calculator 10 + 20
+**Status: COMPLETED** ✅
+- [x] Modify main signature to accept argc and argv
+- [x] Parse and validate command line arguments
+- [x] Convert string arguments to numbers (atof)
+- [x] Implement operator matching with strcmp
+- [x] Support command line mode for dual-operand operations
+- [x] Support command line mode for single-operand operations (sqrt)
+- [x] Maintain backward compatibility with interactive mode
 
-**Key Concepts to Learn:**
-- argc and argv
-- Command line parsing
+**Key Concepts Learned:**
+- argc (argument count) and argv (argument vector)
+- Command line argument parsing
+- String to number conversion (atof)
+- Dual-mode program design (CLI + interactive)
+- Handling different argument counts for different operations
 
 ---
 
 ### Module 15: Expression Parser (Boss Challenge) 👹
-**Status: PENDING**
-- [ ] Implement stack data structure
-- [ ] Understand operator precedence
-- [ ] Convert infix to postfix (RPN)
-- [ ] Evaluate postfix expression
-- [ ] Support: 3 * (4 + 5) - 6
+**Status: COMPLETED** ✅
+- [x] Implement stack data structure (NumStack and CharStack)
+- [x] Understand operator precedence
+- [x] Implement Shunting Yard algorithm (infix to postfix conversion)
+- [x] Evaluate postfix expression
+- [x] Support complex expressions: 3 * (4 + 5) - 6
+- [x] Integrate expression calculator into main program
 
-**Key Concepts to Learn:**
-- Stack implementation
-- Reverse Polish Notation
+**Key Concepts Learned:**
+- Stack implementation and operations
+- Reverse Polish Notation (RPN)
+- Shunting Yard algorithm
+- Operator precedence and associativity
 - Data structures and algorithms
+- Complex expression parsing and evaluation

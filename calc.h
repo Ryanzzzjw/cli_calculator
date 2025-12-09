@@ -20,6 +20,8 @@ double power(double base, double exponent);
 double square_root(double number);
 double modulo(double a, double b);
 
+void expression_calculator(void);
+
 // History record structure
 typedef struct {
     double num1;

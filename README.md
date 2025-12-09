@@ -22,6 +22,12 @@
 - ✅ 计算历史记录（结构体数组）
 - ✅ 查看历史记录
 - ✅ 清除历史记录
+- ✅ 历史记录文件持久化
+- ✅ 自动加载和保存历史
+- ✅ 命令行参数支持
+- ✅ 双模式运行（命令行/交互式）
+- ✅ 复杂表达式解析和计算
+- ✅ 支持括号和运算符优先级
 
 ## 学习进度
 
@@ -36,68 +42,14 @@
 - ✅ **模块九**: 科学计算器
 - ✅ **模块十**: 结构体与历史记录
 - ✅ **模块十一**: 历史记录管理
-- ⏳ 更多模块开发中...
+- ✅ **模块十二**: 安全字符串处理
+- ✅ **模块十三**: 文件持久化
+- ✅ **模块十四**: 命令行参数
+- ✅ **模块十五**: 表达式解析器（终极挑战）
+
+**🎉 恭喜！你已经完成了所有15个模块的学习！**
 
 详细学习进度请查看 [process.md](process.md)
-
-## 编译和运行
-
-### 方法1：使用 CMake（推荐）
-
-```bash
-# 配置项目
-cmake -B build
-
-# 编译项目
-cmake --build build
-
-# 运行程序
-./build/cli_calculator.exe
-```
-
-### 方法2：使用 GCC 直接编译
-
-**Windows (MinGW):**
-```bash
-gcc main.c calc.c -o calculator.exe
-```
-
-**Linux/macOS:**
-```bash
-gcc main.c calc.c -o calculator.exe -lm
-```
-
-注意：Linux/macOS 需要添加 `-lm` 参数来链接数学库。
-
-### 运行程序
-
-```bash
-./calculator.exe
-```
-
-或在 Windows 上：
-
-```bash
-calculator.exe
-```
-
-## 项目结构
-
-```
-cli_calculator/
-├── main.c          # 主程序文件
-├── calc.h          # 计算函数头文件
-├── calc.c          # 计算函数实现文件
-├── process.md      # 学习进度记录
-├── README.md       # 项目说明文档
-└── CMakeLists.txt  # CMake 配置文件
-```
-
-## 技术栈
-
-- C 语言
-- GCC 编译器
-- CMake (可选)
 
 ## 已掌握的知识点
 
@@ -169,6 +121,34 @@ cli_calculator/
 - 条件格式化输出
 - 历史记录管理功能
 
+### 模块十二
+- 安全字符串处理
+- snprintf() 函数使用
+- 缓冲区溢出防护
+- sizeof() 运算符
+- 内存安全最佳实践
+
+### 模块十三
+- 文件 I/O 操作
+- fopen/fclose 文件管理
+- fprintf/fscanf 格式化读写
+- 数据持久化
+- 错误处理和资源管理
+
+### 模块十四
+- 命令行参数解析（argc/argv）
+- atof() 字符串转数字
+- strcmp() 字符串比较
+- 双模式程序设计
+- 命令行工具开发
+
+### 模块十五
+- 栈数据结构实现
+- Shunting Yard 算法
+- 逆波兰表示法（RPN）
+- 运算符优先级处理
+- 复杂表达式解析
+
 ## 版本
 
-v11.0 - 历史记录管理版（History Management Edition）
+v15.0 - 表达式解析器版（Expression Parser Edition）
