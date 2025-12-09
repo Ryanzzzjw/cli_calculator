@@ -110,58 +110,69 @@
 ---
 
 ### Module 8: Multi-file Compilation 🎯
-**Status: PENDING**
-- [ ] Create calc.h header file
-- [ ] Create calc.c implementation file
-- [ ] Use #ifndef header guards
-- [ ] Separate function declarations and definitions
-- [ ] Compile multiple files: `gcc main.c calc.c -o calculator`
+**Status: COMPLETED** ✅
+- [x] Create calc.h header file
+- [x] Create calc.c implementation file
+- [x] Use #ifndef header guards
+- [x] Separate function declarations and definitions
+- [x] Compile multiple files: `gcc main.c calc.c -o calculator`
+- [x] Configure CMake for multi-file compilation
 
-**Key Concepts to Learn:**
+**Key Concepts Learned:**
 - Header files (C language soul #2)
-- Preprocessor directives
-- Code modularization
+- Preprocessor directives (#ifndef, #define, #endif)
+- Code modularization and project organization
+- Function declaration vs definition
+- Multi-file compilation with GCC and CMake
 
 ---
 
 ### Module 9: Scientific Calculator
-**Status: PENDING**
-- [ ] Include math.h library
-- [ ] Implement power function (pow)
-- [ ] Implement square root (sqrt)
-- [ ] Implement modulo (fmod)
-- [ ] Compile with -lm flag on Linux/macOS
+**Status: COMPLETED** ✅
+- [x] Include math.h library
+- [x] Implement power function (pow)
+- [x] Implement square root (sqrt)
+- [x] Implement modulo (fmod)
+- [x] Compile with -lm flag on Linux/macOS
+- [x] Update menu to support new operations
+- [x] Handle input validation for scientific operations
 
-**Key Concepts to Learn:**
-- Math library functions
-- Library linking
+**Key Concepts Learned:**
+- Math library functions (pow, sqrt, fmod)
+- Library linking (CMake configuration)
+- Conditional input handling (square root needs only one number)
+- Error handling for scientific operations (negative square root, modulo by zero)
 
 ---
 
 ### Module 10: History with Struct 🎯
-**Status: PENDING**
-- [ ] Define struct Record
-- [ ] Use typedef for simplification
-- [ ] Create struct array
-- [ ] Store calculation history
+**Status: COMPLETED** ✅
+- [x] Define struct Record
+- [x] Use typedef for simplification
+- [x] Create struct array
+- [x] Store calculation history
 
-**Key Concepts to Learn:**
+**Key Concepts Learned:**
 - Structures (C language soul #3)
 - typedef keyword
 - Struct arrays
+- String operations with strcpy()
 
 ---
 
 ### Module 11: History Management
-**Status: PENDING**
-- [ ] Implement view history function
-- [ ] Implement clear history function
-- [ ] Traverse struct array
-- [ ] Access struct members
+**Status: COMPLETED** ✅
+- [x] Implement view history function
+- [x] Implement clear history function
+- [x] Traverse struct array
+- [x] Access struct members
+- [x] Conditional formatting for different operators
 
-**Key Concepts to Learn:**
+**Key Concepts Learned:**
 - Struct array operations
 - Member access (. operator)
+- String comparison with strcmp()
+- Conditional output formatting
 
 ---
 

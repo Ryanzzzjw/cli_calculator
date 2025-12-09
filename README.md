@@ -17,6 +17,11 @@
 - ✅ 退出选项
 - ✅ 安全输入验证（fgets + sscanf）
 - ✅ 指针演示（swap函数）
+- ✅ 科学计算功能（幂运算、平方根、取模）
+- ✅ Math.h 库函数使用
+- ✅ 计算历史记录（结构体数组）
+- ✅ 查看历史记录
+- ✅ 清除历史记录
 
 ## 学习进度
 
@@ -27,18 +32,42 @@
 - ✅ **模块五**: 循环功能
 - ✅ **模块六**: 输入验证
 - ✅ **模块七**: 指针基础
-- ⏳ **模块八**: 多文件编译
+- ✅ **模块八**: 多文件编译
+- ✅ **模块九**: 科学计算器
+- ✅ **模块十**: 结构体与历史记录
+- ✅ **模块十一**: 历史记录管理
 - ⏳ 更多模块开发中...
 
 详细学习进度请查看 [process.md](process.md)
 
 ## 编译和运行
 
-### 使用 GCC 编译
+### 方法1：使用 CMake（推荐）
 
 ```bash
-gcc main.c -o calculator.exe
+# 配置项目
+cmake -B build
+
+# 编译项目
+cmake --build build
+
+# 运行程序
+./build/cli_calculator.exe
 ```
+
+### 方法2：使用 GCC 直接编译
+
+**Windows (MinGW):**
+```bash
+gcc main.c calc.c -o calculator.exe
+```
+
+**Linux/macOS:**
+```bash
+gcc main.c calc.c -o calculator.exe -lm
+```
+
+注意：Linux/macOS 需要添加 `-lm` 参数来链接数学库。
 
 ### 运行程序
 
@@ -57,6 +86,8 @@ calculator.exe
 ```
 cli_calculator/
 ├── main.c          # 主程序文件
+├── calc.h          # 计算函数头文件
+├── calc.c          # 计算函数实现文件
 ├── process.md      # 学习进度记录
 ├── README.md       # 项目说明文档
 └── CMakeLists.txt  # CMake 配置文件
@@ -109,6 +140,35 @@ cli_calculator/
 - 传值调用 vs 传引用调用
 - 指针参数的使用
 
+### 模块八
+- 头文件和源文件的分离
+- 函数声明与定义
+- 头文件保护 (#ifndef, #define, #endif)
+- 多文件编译（GCC 和 CMake）
+- 代码模块化组织
+
+### 模块九
+- Math.h 数学库的使用
+- pow() 函数（幂运算）
+- sqrt() 函数（平方根）
+- fmod() 函数（浮点数取模）
+- 库链接配置（-lm 参数）
+- 条件输入处理（单参数函数）
+- 科学运算错误处理
+
+### 模块十
+- 结构体定义与使用
+- typedef 关键字
+- 结构体数组
+- strcpy() 字符串操作
+- 成员访问运算符 (.)
+
+### 模块十一
+- 结构体数组遍历
+- strcmp() 字符串比较
+- 条件格式化输出
+- 历史记录管理功能
+
 ## 版本
 
-v7.0 - 指针基础版（Pointer Basics Edition）
+v11.0 - 历史记录管理版（History Management Edition）

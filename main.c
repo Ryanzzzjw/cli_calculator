@@ -1,12 +1,15 @@
 /*
- * Command Line Calculator v7.0
- * Pointer Basics Edition
+ * Command Line Calculator v9.0
+ * Scientific Calculator Edition
  * Author: Ryan Zhang
  */
 
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include "calc.h"
 
 /*
  * Safely read an integer from stdin using fgets + sscanf
@@ -38,29 +41,47 @@ int safe_read_double(double *value) {
     return 1;
 }
 
-/*
- * Swap function (pass by value) - demonstrates why this doesn't work
- * This function swaps local copies, not the original variables
- */
-void swap_wrong(double a, double b) {
-    double temp;
-    temp = a;
-    a = b;
-    b = temp;
-    printf("  [Inside swap_wrong] a = %.2lf, b = %.2lf\n", a, b);
+// History management
+#define MAX_HISTORY 100
+Record history[MAX_HISTORY];
+int history_count = 0;
+
+void view_history() {
+     if (history_count == 0) {
+             printf("\nNo calculation history yet.\n\n");
+             return;
+        }
+    printf("\n");
+     printf("========================================\n");
+     printf("  Calculation History\n");
+     printf("========================================\n");
+     printf("\n");
+
+     for (int i = 0; i < history_count; i++) {
+             if (strcmp(history[i].operator, "sqrt") == 0) {
+                 printf("%d. sqrt %.2lf = %.2lf\n",
+                        i + 1,
+                        history[i].num1,
+                        history[i].result);
+             } else {
+                 printf("%d. %.2lf %s %.2lf = %.2lf\n",
+                        i + 1,
+                        history[i].num1,
+                        history[i].operator,
+                        history[i].num2,
+                        history[i].result);
+             }
+         }
+     printf("\n");
+     printf("========================================\n");
+     printf("\n");
 }
 
-/*
- * Swap function (pass by reference) - correct implementation using pointers
- * Swaps the values of two double variables using pointer parameters
- */
-void swap(double *a, double *b) {
-    double temp;
-    temp = *a;
-    *a = *b;
-    *b = temp;
-    printf("  [Inside swap] *a = %.2lf, *b = %.2lf\n", *a, *b);
+void clear_history() {
+     history_count = 0;
+     printf("\nHistory cleared successfully!\n\n");
 }
+
 
 int main() {
     double num1, num2, result;
@@ -69,8 +90,8 @@ int main() {
     // Display welcome message
     printf("\n");
     printf("+==========================================+\n");
-    printf("|     Command Line Calculator v7.0        |\n");
-    printf("|        Pointer Basics Edition           |\n");
+    printf("|     Command Line Calculator v9.0        |\n");
+    printf("|    Scientific Calculator Edition        |\n");
     printf("+==========================================+\n");
     printf("\n");
     printf("Author: Ryan Zhang\n");
@@ -85,10 +106,16 @@ int main() {
         printf("|  2. Subtraction    (-)                   |\n");
         printf("|  3. Multiplication (*)                   |\n");
         printf("|  4. Division       (/)                   |\n");
-        printf("|  6. Swap Demo      (Pointer)             |\n");
-        printf("|  5. Exit                                 |\n");
+        printf("|  5. Power          (x^y)                 |\n");
+        printf("|  6. Square Root    (sqrt(x))             |\n");
+        printf("|  7. Modulo         (x mod y)             |\n");
+        printf("|  8. View History                         |\n");
+        printf("|  9. Clear History                        |\n");
+        printf("|  10. Swap           (demo)               |\n");
+        printf("|  11. Exit                                |\n");
         printf("+------------------------------------------+\n");
-        printf("\nEnter your choice [1-6]: ");
+        printf("\n");
+        printf("Enter your choice [1-11]: ");
 
         // Read and validate choice
         if (!safe_read_int(&choice)) {
@@ -96,7 +123,7 @@ int main() {
             continue;
         }
 
-        if (choice == 5) {
+        if (choice == 11) {
             printf("\n");
             printf("+==========================================+\n");
             printf("|  Thank you for using Calculator!        |\n");
@@ -107,13 +134,13 @@ int main() {
         }
 
         // Validate choice range
-        if (choice < 1 || choice > 6) {
-            printf("\n[X] Error: Invalid choice! Please select 1-6.\n\n");
+        if (choice < 1 || choice > 11) {
+            printf("\n[X] Error: Invalid choice! Please select 1-9.\n\n");
             continue;
         }
 
         // Handle swap demo - demonstrates pointer usage
-        if (choice == 6) {
+        if (choice == 10) {
             double x = 10.5;
             double y = 20.8;
 
@@ -128,15 +155,8 @@ int main() {
             printf("  x = %.2lf, y = %.2lf\n", x, y);
             printf("\n");
 
-            // Test pass by value (doesn't work)
-            printf("Test 1: swap_wrong(x, y) - Pass by value\n");
-            swap_wrong(x, y);
-            printf("  [After call] x = %.2lf, y = %.2lf\n", x, y);
-            printf("  Values NOT swapped!\n");
-            printf("\n");
-
             // Test pass by reference (works correctly)
-            printf("Test 2: swap(&x, &y) - Pass by reference\n");
+            printf("Test: swap(&x, &y) - Pass by reference\n");
             swap(&x, &y);
             printf("  [After call] x = %.2lf, y = %.2lf\n", x, y);
             printf("  Values successfully swapped!\n");
@@ -153,49 +173,112 @@ int main() {
             continue;
         }
 
-        // Prompt user for numbers
-        printf("\n");
-
-        printf("Enter first number:  ");
-        if (!safe_read_double(&num1)) {
-            printf("\nError: Please enter a valid number!\n\n");
+        // Handle history functions - no need for number input
+        if (choice == 8) {
+            view_history();
             continue;
         }
 
-        printf("Enter second number: ");
-        if (!safe_read_double(&num2)) {
-            printf("\nError: Please enter a valid number!\n\n");
+        if (choice == 9) {
+            clear_history();
             continue;
+        }
+
+        // Prompt user for numbers
+        printf("\n");
+
+        // Square root only needs one number
+        if (choice == 6) {
+            printf("Enter number:  ");
+            if (!safe_read_double(&num1)) {
+                printf("\nError: Please enter a valid number!\n\n");
+                continue;
+            }
+        } else {
+            printf("Enter first number:  ");
+            if (!safe_read_double(&num1)) {
+                printf("\nError: Please enter a valid number!\n\n");
+                continue;
+            }
+
+            printf("Enter second number: ");
+            if (!safe_read_double(&num2)) {
+                printf("\nError: Please enter a valid number!\n\n");
+                continue;
+            }
         }
 
         // Perform calculation based on user choice
         printf("\n");
         printf("------------------------------------------\n");
 
+        char operator_str[10] = "";
+
         switch (choice) {
             case 1:
-                result = num1 + num2;
+                result = add(num1, num2);
                 printf("  %.2lf + %.2lf = %.2lf\n", num1, num2, result);
+                strcpy(operator_str, "+");
                 break;
 
             case 2:
-                result = num1 - num2;
+                result = subtract(num1, num2);
                 printf("  %.2lf - %.2lf = %.2lf\n", num1, num2, result);
+                strcpy(operator_str, "-");
                 break;
 
             case 3:
-                result = num1 * num2;
+                result = multiply(num1, num2);
                 printf("  %.2lf * %.2lf = %.2lf\n", num1, num2, result);
+                strcpy(operator_str, "*");
                 break;
 
             case 4:
                 if (num2 == 0) {
                     printf(" Error: Cannot divide by zero!\n");
                 } else {
-                    result = num1 / num2;
+                    result = divide(num1, num2);
+                    strcpy(operator_str, "/");
                     printf("  %.2lf / %.2lf = %.2lf\n", num1, num2, result);
                 }
                 break;
+
+            case 5:
+                result = power(num1, num2);
+                strcpy(operator_str, "^");
+                printf("  %.2lf^%.2lf = %.2lf\n", num1, num2, result);
+                break;
+
+            case 6:
+                if (num1 < 0) {
+                    printf("  Error: Cannot calculate square root of negative number!\n");
+                } else {
+                    result = square_root(num1);
+                    num2 =  0;
+                    strcpy(operator_str, "sqrt");
+                    printf("  sqrt(%.2lf) = %.2lf\n", num1, result);
+                }
+                break;
+
+            case 7:
+                if (num2 == 0) {
+                    printf("  Error: Cannot perform modulo with zero!\n");
+                } else {
+                    result = modulo(num1, num2);
+                    strcpy(operator_str, "%");
+                    printf("  %.2lf mod %.2lf = %.2lf\n", num1, num2, result);
+                }
+                break;
+        }
+
+        if (history_count < MAX_HISTORY && strlen(operator_str) > 0) {
+            history[history_count].num1 = num1;
+            history[history_count].num2 = num2;
+            history[history_count].result = result;
+            strcpy(history[history_count].operator, operator_str);
+
+            history_count++;
+
         }
 
         printf("------------------------------------------\n");
